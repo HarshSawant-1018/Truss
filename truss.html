@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width:300px;
+            height:200px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Truss</h1>
+    <h2>Warren Truss</h2>
+    <img src="./truss .png" alt="image of truss"/>
+    <p>Enter  forces at 2 and 4:</p>
+    
+    <input type="number" id="num1" placeholder="Enter first number">
+    <input type="number" id="num2" placeholder="Enter second number">
+   
+    <button onclick="addNumbers()">Calculate</button>
+
+    <p id="Fab"></p>
+    <p id="Fae"></p>
+    <p id="Fde"></p>
+    <p id="Fcd"></p>
+    <p id="Fbe"></p>
+    <p id="Fbc"></p>
+    <p id="notice"></p>
+    
+    <script>
+        function addNumbers() {
+            // Get the values of the input fields
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+           
+            // Add the numbers
+            var Ay = (num1 + num2) / 2;
+            var Rd = (num1 + num2) / 2;
+            // Calculating sin(60) cos(60) in radians
+            var sin60 = Math.sin((60 * Math.PI) / 180);
+            var cos60 = Math.cos((60 * Math.PI) / 180);
+            // Performing the calculation (-Ay) / sin(60°)
+            var Fab = (-Ay) / sin60;
+            var Fae = -Fab*cos60  
+            var Fde = Fae ;
+            var Fcd = Fab ;
+            var Fbe = ((-Fab*sin60)-100) / sin60 ;
+            var Fbc = Fab*cos60 ;
+           
+            // Display the result
+            
+            document.getElementById("Fab").textContent ="Fab is  " + Fab +" newton";
+            document.getElementById("Fae").textContent ="Fae is  " + Fae +" newton";
+            document.getElementById("Fde").textContent ="Fde is  " + Fde +" newton";
+            document.getElementById("Fcd").textContent ="Fcd is  " + Fcd +" newton";
+            document.getElementById("Fbe").textContent ="Fbe is  " + Fbe +" newton";
+            document.getElementById("Fbc").textContent ="Fbc is  " + Fbc +" newton";
+            document.getElementById("notice").textContent =" Notice : Positive force denotes Tension force in member whereas Negative force denotes Compressive force " ;
+            
+        }   
+    </script>
+</body>
+
+</html>
